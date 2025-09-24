@@ -23,4 +23,4 @@ Backend: Flask (Python)
 
 Database: SQLite
 
-Frontend: HTML, CSS
+Frontend: HTML, CSS , JavaScript
