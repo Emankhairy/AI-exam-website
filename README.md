@@ -1,9 +1,9 @@
-AI Exam Web App
+- AI Exam Web App
 
 A lightweight web application for managing and taking AI-related exams.
 Built with Flask (Python micro web framework) and SQLite (lightweight database engine).
 
-Features
+- Features :-
 
 📝 User-friendly interface for exam questions and answers
 
@@ -17,7 +17,7 @@ Features
 
 🔒 Secure user authentication (optional)
 
-Tech Stack
+- Tech Stack :-
 
 Backend: Flask (Python)
 
