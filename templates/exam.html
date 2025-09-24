@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Exam</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff6b6b, #87f1ff);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        form {
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 30px;
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(135deg, #3498db, #6c5ce7);
+            color: #ecf0f1;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            transition: background 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(135deg, #2980b9, #9b59b6);
+        }
+    </style>
+</head>
+<body>
+    <form action="/submit-exam" method="POST">
+        <h1>Exam Page</h1>
+         <!-- Timer -->
+         <p id="timer">Time Left: <span id="time"></span></p>
+         
+        {% for question in exam_questions %}
+            <label>{{ question[1] }}</label><br>
+            <input type="text" name="answer{{ question[0] }}"><br><br>
+        {% endfor %}
+        <input type="submit" value="Submit Exam">
+    </form>
+    <script>
+        let timeLeft = 300; // Adjust this to set the exam duration in seconds
+        const countdown = document.getElementById('time');
+        const intervalId = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(intervalId);
+                document.getElementById('examForm').submit();  // Submit the form when time is up
+            } else {
+                countdown.textContent = formatTime(timeLeft);
+                timeLeft--;
+            }
+        }, 1000);
+    
+        // Format time as mm:ss
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        }
+    </script>
+</body>
+</html>
