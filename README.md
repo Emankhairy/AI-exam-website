@@ -19,8 +19,8 @@ Built with Flask (Python micro web framework) and SQLite (lightweight database e
 
 ## **Tech Stack :-**
 
-* Backend: Flask (Python)
+* **Backend:** Flask (Python)
 
-* Database: SQLite
+* **Database:** SQLite
 
-* Frontend: HTML, CSS , JavaScript
+* **Frontend:** HTML, CSS , JavaScript
